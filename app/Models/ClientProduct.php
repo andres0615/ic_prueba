@@ -17,4 +17,6 @@ class ClientProduct extends Model
     protected $table = 'client_product';
 
     protected $primaryKey='id';
+
+    public $timestamps = false;
 }
