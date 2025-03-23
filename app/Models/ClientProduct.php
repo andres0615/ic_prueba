@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ClientProduct extends Model
 {
     use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'client_product';
+
+    protected $primaryKey='id';
 }
