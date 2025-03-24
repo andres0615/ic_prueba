@@ -7,6 +7,7 @@
     <script src="{{ asset('js/vue/vue2.js') }}"></script>
     <script src="{{ asset('js/vue/vue-router.js') }}"></script>
     <script src="{{ asset('js/vue/axios.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 <body>
     <div id="app">
@@ -18,15 +19,23 @@
 
     <!-- Templates de los componentes -->
     @include('components/clients/clients-template')
+    @include('components/products/products-template')
+
 
     <!-- Scripts de los componentes -->
     @include('components/clients/clients-script')
+    @include('components/products/products-script')
 
     <script>
+
+        // se usa blade para capturar la url base de la aplicacion
+        const baseUrl = "{{ config('app.url') }}";
+        const apiUrl = baseUrl + '/api';
 
         // Definir las rutas
         const routes = [
             { path: '/', component: ClientsComponent },
+            { path: '/products/:client_id', component: ProductsComponent },
         ];
 
         const router = new VueRouter({

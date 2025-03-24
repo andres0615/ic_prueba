@@ -1,6 +1,6 @@
 <script>
-    const ClientsComponent = { 
-        template: '#clients-template',
+    const ProductsComponent = { 
+        template: '#products-template',
         methods: {
             getClients(){
                 let self = this;
@@ -17,12 +17,15 @@
         },
         data(){
             return {
-                clients: {}
+                products: {},
+                clientId: null
             }
         },
         mounted(){
             console.log(apiUrl);
-            this.getClients();
+            // this.getClients();
+            this.clientId = this.$route.params.client_id;
+            console.log(this.clientId);
         }
     };
 </script>
