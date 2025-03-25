@@ -8,9 +8,9 @@ use App\Models\Client;
 class ClientController extends Controller
 {
     public function index(){
-        $clients = Client::all();
+        $model = new Client();
 
-        $data = ['clients' => $clients];
+        $data = $model->getAll();
 
         return response()->json($data);
     }

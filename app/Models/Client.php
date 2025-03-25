@@ -19,4 +19,12 @@ class Client extends Model
     protected $primaryKey='id';
 
     public $timestamps = false;
+
+    public function getAll(){
+        $clients = Client::all();
+
+        $data = ['clients' => $clients];
+
+        return $data;
+    }
 }
