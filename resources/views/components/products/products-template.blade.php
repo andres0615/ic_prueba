@@ -7,7 +7,7 @@
             <thead>
                 <th>Seleccionar</th>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Stock</th>
             </thead>
@@ -27,7 +27,7 @@
         </table>
         <br>
         <ul>
-            <li v-for="errorMessage in errorMessages">{{ errorMessage }}</li>
+            <li v-for="errorMessage in errorMessages" v-html="errorMessage"></li>
         </ul>
         <br>
         <a href="#" @click="buy($event)">Comprar</a>

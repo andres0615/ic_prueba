@@ -30,4 +30,13 @@ class OrderController extends Controller
             return response()->json($data);
         }
     }
+
+    public function show($orderId)
+    {
+        $orderModel = new Order();
+
+        $data = $orderModel->show($orderId);
+
+        return response()->json($data);
+    }
 }

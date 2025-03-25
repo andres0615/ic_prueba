@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\OrderDetail;
 
 class Order extends Model
 {
@@ -43,7 +44,7 @@ class Order extends Model
                 // se valida que la cantidad escogida sea un valor valido
                 $isValidQuantity = $productModel->isValidQuantity($product);
                 if(!$isValidQuantity){
-                    $message = 'Escoja una cantidad valida para el producto "' . $product['productName'] . '", debe ingresar un numero mayor a 0.';
+                    $message = 'Escoja una cantidad valida para el producto <b>"' . $product['productName'] . '"</b>, debe ingresar un numero mayor a 0.';
                     array_push($errorMessages,$message);
                     continue;
                 }
@@ -59,7 +60,7 @@ class Order extends Model
                 // Se valida que el producto sea valido para el cliente
                 $isValidProductForClient = $productModel->isValidProductForClient($product, $clientId);
                 if(!$isValidProductForClient){
-                    $message = 'El producto seleccionado "' . $product['productName'] . '" es invalido.';
+                    $message = 'El producto seleccionado <b>"' . $product['productName'] . '"</b> es invalido.';
                     array_push($errorMessages,$message);
                     continue;
                 }
@@ -96,8 +97,23 @@ class Order extends Model
 
         $data = [
             'success' => $success,
-            'errorMessages' => $errorMessages
+            'errorMessages' => $errorMessages,
+            'orderId' => $order->id
         ];
+
+        return $data;
+    }
+
+    public function show($orderId)
+    {
+        $data = [];
+
+        $order = self::find($orderId);
+
+        $orderDetails = OrderDetail::where('order_id', $orderId)->get();
+
+        $data['order'] = $order;
+        $data['orderDetails'] = $orderDetails;
 
         return $data;
     }

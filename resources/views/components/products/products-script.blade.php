@@ -38,7 +38,9 @@
                     let success = response.data.success;
                     
                     if(success){
-
+                        let orderId = response.data.orderId;
+                        let redirectUrl = '/successful-order/' + orderId;
+                        self.$router.push(redirectUrl);
                     } else {
                         self.errorMessages = response.data.errorMessages;
                     }

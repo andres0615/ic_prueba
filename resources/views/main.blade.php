@@ -20,11 +20,13 @@
     <!-- Templates de los componentes -->
     @include('components/clients/clients-template')
     @include('components/products/products-template')
+    @include('components/orders/successful-order-template')
 
 
     <!-- Scripts de los componentes -->
     @include('components/clients/clients-script')
     @include('components/products/products-script')
+    @include('components/orders/successful-order-script')
 
     <script>
 
@@ -36,6 +38,7 @@
         const routes = [
             { path: '/', component: ClientsComponent },
             { path: '/products/:client_id', component: ProductsComponent },
+            { path: '/successful-order/:order_id', component: SuccessfulOrderComponent },
         ];
 
         const router = new VueRouter({
@@ -44,6 +47,7 @@
 
         // Crear la aplicación
         const app = new Vue({
+            mode: 'history',
             router
         });
         app.$mount('#app');

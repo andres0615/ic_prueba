@@ -25,3 +25,4 @@ use App\Http\Controllers\OrderController;
 Route::get('/client', [ClientController::class, 'index']);
 Route::get('/product/{clientId}', [ProductController::class, 'index']);
 Route::post('/order', [OrderController::class, 'store']);
+Route::get('/order/{orderId}', [OrderController::class, 'show']);
