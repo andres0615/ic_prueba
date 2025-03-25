@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,4 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/client', [ClientController::class, 'index']);
 Route::get('/product/{clientId}', [ProductController::class, 'index']);
+Route::post('/order', [OrderController::class, 'store']);

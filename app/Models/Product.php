@@ -37,4 +37,54 @@ class Product extends Model
 
         return $data;
     }
+
+    public function isStockAvailable($product){
+        $valid = true;
+        if($product['productQuantity'] > $product['productStock']){
+            $valid = false;
+        }
+
+        return $valid;
+    }
+
+    public function isValidQuantity($product)
+    {
+        $valid = true;
+        $quantity = $product['productQuantity'];
+
+        if(is_int($quantity)){
+            if($quantity <= 0){
+                $valid = false;
+            }
+        } else {
+            $valid = false;
+        }
+
+        return $valid;
+    }
+
+    public function updateProductStock($buyedProduct)
+    {
+        $product = self::find($buyedProduct['productId']);
+        $newStock = $product->stock - $buyedProduct['productQuantity'];
+        $product->stock = $newStock;
+        $product->save();
+
+        return true;
+    }
+
+    public function isValidProductForClient($product,$clientId)
+    {
+        $valid = true;
+
+        $availableProducts = $this->getAll($clientId);
+        $availableProducts = $availableProducts['products'];
+        $availableProducts = collect($availableProducts)->pluck('productId');
+
+        if(!$availableProducts->contains($product['productId'])){
+            $valid = false;
+        }
+
+        return $valid;
+    }
 }
