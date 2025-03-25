@@ -33,8 +33,12 @@ class Order extends Model
         $order->client_id = $clientId;
         $order->save();
 
+        $selectedProducts = 0;
+
         foreach($products as $product) {
             if($product['selected'] === true){
+
+                $selectedProducts++;
 
                 // se valida que la cantidad escogida sea un valor valido
                 $isValidQuantity = $productModel->isValidQuantity($product);
@@ -72,9 +76,16 @@ class Order extends Model
             }
         }
 
+        // se valida que se hallan escogido productos
+        $hasSelectedProducts = ($selectedProducts > 0)?true:false;
+        if(!$hasSelectedProducts){
+            $message = 'No se ha seleccionado ningun producto. Por favor seleccione al menos un producto.';
+            array_push($errorMessages,$message);
+        }
+
         // dump(__FILE__, $errorMessages);
 
-        $success = ($isValidQuantity && $isStockAvailable && $isValidProductForClient)?true:false;
+        $success = (count($errorMessages) === 0)?true:false;
 
         // si pasan las validaciones se hace el commit
         if($success){
