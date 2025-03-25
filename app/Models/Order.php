@@ -108,9 +108,22 @@ class Order extends Model
     {
         $data = [];
 
-        $order = self::find($orderId);
+        $order = self::select([
+            'orders.id as orderId',
+            'clients.name as clientName'
+        ])
+        ->join('clients','orders.client_id','=','clients.id')
+        ->where('orders.id',$orderId)
+        ->first();
 
-        $orderDetails = OrderDetail::where('order_id', $orderId)->get();
+        $orderDetails = OrderDetail::select([
+            'products.id as productId',
+            'products.name as productName',
+            'order_details.quantity as productQuantity',
+        ])
+        ->join('products','order_details.product_id','=','products.id')
+        ->where('order_details.order_id', $orderId)
+        ->get();
 
         $data['order'] = $order;
         $data['orderDetails'] = $orderDetails;

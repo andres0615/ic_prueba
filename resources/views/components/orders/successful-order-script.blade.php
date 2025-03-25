@@ -2,28 +2,33 @@
     const SuccessfulOrderComponent = { 
         template: '#successful-order',
         methods: {
-            getClients(){
-                // let self = this;
+            getOrder(){
+                let self = this;
 
-                // let url = apiUrl + '/client';
+                let url = apiUrl + '/order/' + this.orderId;
 
-                // axios.get(url).then(function(response){
-                //     console.log(response.data);
+                axios.get(url).then(function(response){
+                    console.log(response.data);
 
-                //     let clients = response.data.clients;
-                //     self.clients = clients;
-                // });
+                    let order = response.data.order;
+                    let orderDetails = response.data.orderDetails;
+
+                    self.order = order;
+                    self.orderDetails = orderDetails;
+                });
             }
         },
         data(){
             return {
-                clients: {}
+                orderId: null,
+                clients: {},
+                order: {},
+                orderDetails: {}
             }
         },
         mounted(){
-            console.log(apiUrl);
-            // this.getClients();
-            console.log('hola');
+            this.orderId = this.$route.params.order_id;
+            this.getOrder();
         }
     };
 </script>

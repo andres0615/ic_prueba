@@ -7,9 +7,9 @@
             <tbody>
                 <tr>
                     <th>Order ID:</th>
-                    <td>12345</td>
+                    <td>{{ order.orderId }}</td>
                     <th>Cliente:</th>
-                    <td>Carlos Alfonso</td>
+                    <td>{{ order.clientName }}</td>
                 </tr>
             </tbody>
         </table>
@@ -19,16 +19,16 @@
                     <th colspan="3" >Detalle</th>
                 </tr>
                 <tr>
-                    <th>ID</th>
+                    <!-- <th>ID</th> -->
                     <th>Producto</th>
                     <th>Cantidad</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>ID</td>
-                    <td>Product</td>
-                    <td>Cantidad</td>
+                <tr v-for="detail in orderDetails" >
+                    <!-- <td>{{ detail.productId }}</td> -->
+                    <td>{{ detail.productName }}</td>
+                    <td>{{ detail.productQuantity }}</td>
                 </tr>
             </tbody>
         </table>

@@ -6,7 +6,7 @@
         <table>
             <thead>
                 <th>Seleccionar</th>
-                <th>ID</th>
+                <!-- <th>ID</th> -->
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Stock</th>
@@ -16,7 +16,7 @@
                     <td class="borderedc" >
                         <input type="checkbox" :value="product.productId" v-model="product.selected">
                     </td>
-                    <td class="borderedc" >{{ product.productId }}</td>
+                    <!-- <td class="borderedc" >{{ product.productId }}</td> -->
                     <td class="borderedc" >{{ product.productName }}</td>
                     <td class="borderedc" >
                         <input type="number" value="0" min="0" :max="product.productStock" v-model="product.productQuantity" />
