@@ -273,4 +273,76 @@ class OrderTest extends TestCase
         // Se espera que el resultado no sea exitoso
         $this->assertFalse($result['success']);
     }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_client_can_not_buy_products_because_of_has_not_selected_products()
+    {
+        // Se crea un cliente y se le asocia un producto
+        $client = Client::factory()->create();
+        $clientId = $client->id;
+
+        $this->assertIsInt($clientId);
+
+        $product = Product::factory()->create();
+        $productId = $product->id;
+
+        $this->assertIsInt($productId);
+
+        $clientProduct = ClientProduct::factory()->create([
+            'client_id' => $clientId,
+            'product_id' => $productId
+        ]);
+
+        $this->assertIsInt($clientProduct->id);
+
+        // se obtienen los productos disponibles para el cliente
+        $productModel = new Product();
+        $productsResult = $productModel->getAll($clientId);
+        $products = $productsResult['products'];
+
+        $productsLen = count($products);
+
+        // Se espera que la cantidad de productos obtenidos sea 1
+        $this->assertEquals(1,$productsLen);
+
+        // se definen indices necesarios
+        $products = $products->each(function($product){
+            $product['productQuantity'] = 1;
+            $product['selected'] = false;
+            return $product;
+        });
+        
+        $products = $products->toArray();
+
+        // Se indican los productos que se quieren comprar y la cantidad
+        // en este caso no se escoge ningun producto
+        $products[0]['selected'] = false;
+        $products[0]['productQuantity'] = 1;
+
+        // dump($products);
+
+        // se define la request data
+        $requestData = [
+            'clientId' => $clientId,
+            'products' => $products
+        ];
+
+        // Cuando se crea una orden
+        $url = 'api/order';
+
+        $response = $this->post($url,$requestData);
+
+        $response->assertOk();
+
+        $result = $response->original;
+
+        dump(__FILE__, $result);
+
+        // Se espera que el resultado sea exitoso
+        $this->assertFalse($result['success']);
+    }
 }
