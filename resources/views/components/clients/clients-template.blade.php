@@ -1,7 +1,7 @@
 @verbatim
 <template id="clients-template">
     <div>
-        <h1>Clients</h1>
+        <h1>Clientes</h1>
         <table>
             <tbody>
                 <tr v-for="client in clients" >

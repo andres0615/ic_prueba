@@ -2,17 +2,26 @@
     const ProductsComponent = { 
         template: '#products-template',
         methods: {
-            getClients(){
+            getProducts(){
                 let self = this;
 
-                let url = apiUrl + '/client';
+                let url = apiUrl + '/product/' + this.clientId;
 
                 axios.get(url).then(function(response){
                     console.log(response.data);
 
-                    let clients = response.data.clients;
-                    self.clients = clients;
+                    let products = response.data.products;
+                    self.products = products.map((product) => {
+                        product.productQuantity = 0;
+                        product.selected = false;
+                        return product;
+                    });
                 });
+            },
+            buy(event){
+                event.preventDefault();
+                console.log('comprar');
+                console.log(this.products);
             }
         },
         data(){
@@ -22,10 +31,10 @@
             }
         },
         mounted(){
-            console.log(apiUrl);
-            // this.getClients();
+            // console.log(apiUrl);
             this.clientId = this.$route.params.client_id;
-            console.log(this.clientId);
+            // console.log(this.clientId);
+            this.getProducts();
         }
     };
 </script>

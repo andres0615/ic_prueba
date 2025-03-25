@@ -26,6 +26,7 @@ class Product extends Model
             ->select([
                 'products.id as productId',
                 'products.name as productName',
+                'products.stock as productStock',
             ])
             ->join('client_product','products.id','=','client_product.product_id')
             ->join('clients','client_product.client_id','=','clients.id')
