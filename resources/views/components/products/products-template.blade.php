@@ -26,6 +26,10 @@
             </tbody>
         </table>
         <br>
+        <ul>
+            <li v-for="errorMessage in errorMessages">{{ errorMessage }}</li>
+        </ul>
+        <br>
         <a href="#" @click="buy($event)">Comprar</a>
     </div>
 </template>

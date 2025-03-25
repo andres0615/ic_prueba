@@ -52,7 +52,7 @@ class Product extends Model
         $valid = true;
         $quantity = $product['productQuantity'];
 
-        if(is_int($quantity)){
+        if(is_numeric($quantity)){
             if($quantity <= 0){
                 $valid = false;
             }
