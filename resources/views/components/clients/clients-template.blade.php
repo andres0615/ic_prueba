@@ -2,7 +2,8 @@
 <template id="clients-template">
     <div>
         <h1>Clientes</h1>
-        <table>
+        <p>Seleccione un cliente:</p>
+        <table class="table table-bordered" >
             <tbody>
                 <tr v-for="client in clients" >
                     <td class="borderedc" >

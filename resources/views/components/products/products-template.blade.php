@@ -1,9 +1,9 @@
 @verbatim
 <template id="products-template">
     <div>
-        <router-link to="/">Listado de clientes</router-link>
+        <router-link to="/" class="btn btn-primary">Listado de clientes</router-link>
         <h1>Productos</h1>
-        <table>
+        <table class="table table-bordered table-hover">
             <thead>
                 <th>Seleccionar</th>
                 <!-- <th>ID</th> -->
@@ -25,12 +25,10 @@
                 </tr>
             </tbody>
         </table>
-        <br>
-        <ul>
+        <ul v-if="errorMessages.length > 0" class="alert alert-danger">
             <li v-for="errorMessage in errorMessages" v-html="errorMessage"></li>
         </ul>
-        <br>
-        <a href="#" @click="buy($event)">Comprar</a>
+        <a href="#" @click="buy($event)" class="btn btn-success">Comprar</a>
     </div>
 </template>
 @endverbatim

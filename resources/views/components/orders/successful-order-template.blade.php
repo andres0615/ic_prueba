@@ -1,9 +1,14 @@
 @verbatim
 <template id="successful-order">
     <div>
-        <router-link to="/">Listado de clientes</router-link>
-        <h1>Orden generada con exito</h1>
-        <table>
+        <router-link to="/" class="btn btn-primary">Listado de clientes</router-link>
+        <br>
+        <br>
+        <div class="alert alert-success">
+            La orden ha sido generada con exito.
+        </div>
+        <h1>Orden</h1>
+        <table class="table table-bordered" >
             <tbody>
                 <tr>
                     <th>Order ID:</th>
@@ -13,7 +18,7 @@
                 </tr>
             </tbody>
         </table>
-        <table>
+        <table class="table table-bordered" >
             <thead>
                 <tr>
                     <th colspan="3" >Detalle</th>

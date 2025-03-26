@@ -8,6 +8,7 @@
     <script src="{{ asset('js/vue/vue-router.js') }}"></script>
     <script src="{{ asset('js/vue/axios.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
 <body>
     <div id="app">
