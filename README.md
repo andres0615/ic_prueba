@@ -25,6 +25,7 @@
 	```text
 	APP_URL=http://127.0.0.1:8000
 	```
+    Asegurarse que la url ingresada NO termine en slash `/`.
 5. Montar la base de datos usando las migraciones de **Laravel**, con el comando:
 	<br>
 	```shell
@@ -39,4 +40,15 @@
 	<br>
 	```shell
 	php artisan migrate:refresh --seed
+	```
+7. Servir la aplicacion usando el comando:
+	<br>
+	```text
+	php artisan serve
+	```
+    En este punto ya se puede ingresar a la aplicacion con la url que se muestra en la consola.
+8. Opcionalmente se pueden correr los tests con el comando:
+	<br>
+	```text
+	php artisan test
 	```
