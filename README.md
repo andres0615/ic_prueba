@@ -1,6 +1,7 @@
 # Prueba tecnica innclod
 ## Overview
 Este proyecto es una aplicacion **SPA** desarrollada usando las siguientes tecnologias:
+- PHP 7.3
 - Laravel 
 - Vue.js
 - Bootstrap
