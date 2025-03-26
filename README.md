@@ -20,3 +20,23 @@
     DB_USERNAME=root
     DB_PASSWORD=toor
     ```
+4.  Configurar la **APP_URL** en el archivo **.env**:
+	<br>
+	```text
+	APP_URL=http://127.0.0.1:8000
+	```
+5. Montar la base de datos usando las migraciones de **Laravel**, con el comando:
+	<br>
+	```shell
+	php artisan migrate
+	```
+6. Añadir informacion a la base de datos usando los seeders de **Laravel**, con el comando:
+	<br>
+	```shell
+	php artisan db:seed
+	```
+	Opcionalmente si se desea repopular la base de datos se puede usar el comando:
+	<br>
+	```shell
+	php artisan migrate:refresh --seed
+	```
