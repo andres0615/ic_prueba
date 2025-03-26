@@ -1,4 +1,10 @@
 # Prueba tecnica inncloud
+## Overview
+Este proyecto es una aplicacion SPA desarrollada usando las siguientes tecnologias:
+- Laravel 
+- Vue.js
+- Bootstrap
+- PHPUnit
 ## Instalacion
 1. Clonar el proyecto usando **github CLI** con el siguiente comando:
     ```shell
