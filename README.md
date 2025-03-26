@@ -5,6 +5,7 @@ Este proyecto es una aplicacion **SPA** desarrollada usando las siguientes tecno
 - Vue.js
 - Bootstrap
 - PHPUnit
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/ "Convencional Commits")
 ## Instalacion
 1. Clonar el proyecto usando **github CLI** con el siguiente comando:
     ```shell
