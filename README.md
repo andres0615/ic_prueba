@@ -1,4 +1,4 @@
-# Prueba tecnica inncloud
+# Prueba tecnica innclod
 ## Overview
 Este proyecto es una aplicacion **SPA** desarrollada usando las siguientes tecnologias:
 - Laravel 
