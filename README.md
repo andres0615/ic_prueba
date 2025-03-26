@@ -1,6 +1,6 @@
 # Prueba tecnica inncloud
 ## Overview
-Este proyecto es una aplicacion SPA desarrollada usando las siguientes tecnologias:
+Este proyecto es una aplicacion **SPA** desarrollada usando las siguientes tecnologias:
 - Laravel 
 - Vue.js
 - Bootstrap
